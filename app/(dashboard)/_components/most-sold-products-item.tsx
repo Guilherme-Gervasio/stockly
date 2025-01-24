@@ -1,12 +1,12 @@
 import ProductStatusBadge from "@/app/_components/product-status-badge";
-import { MostSoldProductsDto } from "@/app/_data-acess/dashboard/get-dashboard";
+import { MostSoldProductDto } from "@/app/_data-acess/dashboard/get-most-sold-products";
 import { formatCurrency } from "@/app/_helpers/currency";
 
-interface MostsoldProductProps {
-  product: MostSoldProductsDto;
+interface MostSoldProductProps {
+  product: MostSoldProductDto;
 }
 
-const MostsoldProductItem = ({ product }: MostsoldProductProps) => {
+const MostSoldProductItem = ({ product }: MostSoldProductProps) => {
   return (
     <div className="flex items-center justify-between">
       <div className="space-y-[6px]">
@@ -16,7 +16,6 @@ const MostsoldProductItem = ({ product }: MostsoldProductProps) => {
           {formatCurrency(Number(product.price))}
         </p>
       </div>
-
       <div>
         <p className="text-sm font-semibold">{product.totalSold} vendido(s)</p>
       </div>
@@ -24,4 +23,19 @@ const MostsoldProductItem = ({ product }: MostsoldProductProps) => {
   );
 };
 
-export default MostsoldProductItem;
+export const MostSoldProductItemSkeleton = () => {
+  return (
+    <div className="flex items-center justify-between pt-5">
+      <div className="space-y-2">
+        <div className="h-[22px] w-[91.23px] rounded-md bg-gray-200" />
+        <div className="h-6 w-[91.23px] rounded-md bg-gray-200" />
+        <div className="h-6 w-[105px] rounded-md bg-gray-200" />
+      </div>
+      <div>
+        <div className="h-5 w-[86.26px] rounded-md bg-gray-200" />
+      </div>
+    </div>
+  );
+};
+
+export default MostSoldProductItem;
