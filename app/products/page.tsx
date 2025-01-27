@@ -12,7 +12,7 @@ import Header, {
 const ProductsPage = async () => {
   const products = await getProducts();
   return (
-    <div className="m-8 w-full space-y-8 rounded-lg bg-white p-8">
+    <div className="m-8 w-full space-y-8 overflow-auto rounded-lg bg-white p-8">
       <Header>
         <HeaderLeft>
           <HeaderSubtitle>Gestão de Produtos</HeaderSubtitle>
@@ -23,10 +23,7 @@ const ProductsPage = async () => {
           <AddProductButton />
         </HeaderRight>
       </Header>
-      <DataTable
-        columns={productTableColumns}
-        data={JSON.parse(JSON.stringify(products))}
-      />
+      <DataTable columns={productTableColumns} data={products} />
     </div>
   );
 };
