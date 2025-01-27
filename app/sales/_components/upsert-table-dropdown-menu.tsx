@@ -34,7 +34,7 @@ const UpsertSaleTableDropdownMenu = ({
           onClick={() => navigator.clipboard.writeText(product.id)}
         >
           <ClipboardCopyIcon size={16} />
-          Copiar Id
+          Copiar ID
         </DropdownMenuItem>
 
         <DropdownMenuItem

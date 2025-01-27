@@ -11,12 +11,16 @@ import { getSales } from "../_data-acess/sale/get-sales";
 import UpsertSaleButton from "./_components/create-sale-button";
 import { saleTableColumns } from "./_components/table-columns";
 
+// Essa página será montada uma vez e reutilizada (SSG), podendo ser incrementada de forma regenerativa (ISR)
+export const dynamic = "force-static";
+export const revalidate = 10;
+
 const SalesPage = async () => {
   const sales = await getSales();
   const products = await getProducts();
   const productOptions: ComboboxOption[] = products.map((product) => ({
-    value: product.id,
     label: product.name,
+    value: product.id,
   }));
   const tableData = sales.map((sale) => ({
     ...sale,
@@ -30,7 +34,6 @@ const SalesPage = async () => {
           <HeaderSubtitle>Gestão de Vendas</HeaderSubtitle>
           <HeaderTitle>Vendas</HeaderTitle>
         </HeaderLeft>
-
         <HeaderRight>
           <UpsertSaleButton
             products={products}
